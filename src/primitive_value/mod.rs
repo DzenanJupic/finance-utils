@@ -1,7 +1,7 @@
 use core::ops::*;
 
 use num_traits::*;
-use serde::{Deserializer, Serializer};
+use serde::{Deserializer, Serializer, Serialize};
 
 use crate::primitives::*;
 use visitor::PrimitiveValueVisitor;
@@ -65,6 +65,13 @@ Copy + core::fmt::Display + Default + PartialEq + PartialOrd {
     fn serialize_f64_str<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
         where S: Serializer {
         serializer.serialize_str(&self.as_f64().to_string())
+    }
+    fn serialize_option_f64_str<S>(value: &Option<Self>, serializer: S) -> Result<S::Ok, S::Error>
+        where S: Serializer {
+        match value {
+            Some(value) => value.serialize_f64_str(serializer),
+            None => Option::<f64>::None.serialize(serializer)
+        }
     }
     fn serialize_i64_str<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
         where S: Serializer {

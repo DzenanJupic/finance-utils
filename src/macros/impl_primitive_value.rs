@@ -21,12 +21,19 @@ macro_rules! impl_primitive_value {
             $crate::export::num_derive::NumCast, $crate::export::num_derive::Float,
             $crate::export::num_derive::FromPrimitive, $crate::export::num_derive::ToPrimitive,
             $crate::export::num_derive::Zero, $crate::export::serde::Serialize,
-            $crate::export::serde::Deserialize
         )]
         $vis struct $new_type(
             #[display(fmt = "{:.2}")]
             $inner_vis f64
         );
+        
+        impl<'de> $crate::export::serde::Deserialize<'de> for $new_type {
+            fn deserialize<D>(deserializer: D) -> Result<Self, <D as $crate::export::serde::Deserializer<'de>>::Error> where
+                D: $crate::export::serde::Deserializer<'de> {
+                D::deserialize_any(deserializer, $crate::export::PrimitiveValueVisitor)
+                    .map(Self)
+            }
+        }
 
         #[allow(unused)]
         impl $new_type {

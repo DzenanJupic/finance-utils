@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use crate::iso_codes::units::UnitLike;
+use crate::units::UnitLike;
 use derive_more::Display;
 
 /// for explanation of the individual codes, see: [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217)

@@ -4,10 +4,10 @@ use serde::export::{fmt};
 use crate::price_map_visitor;
 use super::Price;
 
-pub struct RawPriceCurrencyVisitor;
+pub struct PriceCurrencyVisitor;
 pub struct UnitValueVisitor;
 
-price_map_visitor!(RawPriceCurrencyVisitor { raw_price: "price", currency: "currency" });
+price_map_visitor!(PriceCurrencyVisitor { raw_price: "price", currency: "currency" });
 price_map_visitor!(UnitValueVisitor { raw_price: "value", currency: "unit" });
 
 fn assign_to_none<T, E>(assign_to: &mut Option<T>, value: T, field: &'static str) -> Result<(), E>

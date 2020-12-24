@@ -100,6 +100,8 @@ macro_rules! serde_option {
 }
 
 #[macro_export]
+// todo: use small vec or other stack based vectors, if max capacity is given
+// maybe also create a new macro to (de)serialize small vecs
 macro_rules! serde_vec {
     (
         serialize $remote_type:ident$(<$($remote_generics:tt),*>)?

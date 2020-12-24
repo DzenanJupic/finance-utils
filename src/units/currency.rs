@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use derive_more::Display;
-use crate::iso_codes::units::UnitLike;
+use crate::units::UnitLike;
 
 /// for explanation of the individual codes, see: [ISO_4217](https://en.wikipedia.org/wiki/ISO_4217)
 #[derive(Copy, Clone, Debug, Display, Serialize, Deserialize, PartialEq, Eq)]

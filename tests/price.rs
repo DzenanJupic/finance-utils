@@ -7,7 +7,7 @@ use rand::{random, Rng};
 use serde::{Deserialize, Serialize};
 use serde_json::{Deserializer, Serializer};
 
-use pecunia::iso_codes::units::currency::Currency;
+use pecunia::units::currency::Currency;
 use pecunia::price::Price;
 use pecunia::primitives::*;
 use pecunia::test_ops;
